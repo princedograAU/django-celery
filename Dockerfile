@@ -9,6 +9,10 @@ WORKDIR /server
 RUN apk update
 RUN apk upgrade
 
+# install build  dependencies
+RUN apk add --upgrade --no-cache postgresql-client
+RUN apk add --update --no-cache --virtual .tmp-build-deps gcc libc-dev linux-headers postgresql-dev
+
 # setup pipenv
 RUN pip install --upgrade pip
 RUN pip install pipenv
